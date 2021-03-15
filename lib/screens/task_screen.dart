@@ -50,8 +50,52 @@ class TaskScreen extends StatelessWidget {
                   topRight: Radius.circular(30.0),
                 ),
               ),
+              child: ListView(
+                children: [
+                  TaskItem(
+                    name: 'Buy milk',
+                    status: false,
+                  ),
+                  TaskItem(
+                    name: 'Buy edges',
+                    status: false,
+                  ),
+                  TaskItem(
+                    name: 'Buy bread',
+                    status: true,
+                  ),
+                ],
+              ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class TaskItem extends StatelessWidget {
+  TaskItem({this.name, this.status});
+
+  final String name;
+  final bool status;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 40.0, right: 40.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            name,
+            style: TextStyle(
+              color: Colors.black87,
+              fontSize: 20.0,
+            ),
+          ),
+          Checkbox(value: status, onChanged: (bool check) {}),
         ],
       ),
     );
